@@ -3,7 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from "@nestjs/mongoose";
 import { ConfigModule, ConfigService } from "@nestjs/config";
-import { MoneyEntryModule } from './money-entry/money-entry.module';
+import { MoneyEarningModule } from './money-earning/money-earning.module';
+import { MoneyExpenseModule } from './money-expense/money-expense.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersService } from './users/users.service';
 import { UsersModule } from './users/users.module';
@@ -19,7 +20,8 @@ import { UsersModule } from './users/users.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    MoneyEntryModule,
+    MoneyEarningModule,
+    MoneyExpenseModule,
     AuthModule,
     UsersModule,
   ],

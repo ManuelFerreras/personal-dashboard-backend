@@ -1,9 +1,9 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
-export type MoneyEntryDocument = MoneyEntry & Document;
+export type MoneyEarningDocument = MoneyEarning & Document;
 
 @Schema()
-export class MoneyEntry {
+export class MoneyEarning {
   @Prop()
   id: number;
 
@@ -14,10 +14,13 @@ export class MoneyEntry {
   description: string;
 
   @Prop()
+  createdBy: string;
+
+  @Prop()
   generation_date_time: Date;
 
 }
 
-export const MoneyEntrySchema =
-  SchemaFactory.createForClass(MoneyEntry);
+export const MoneyEarningSchema =
+  SchemaFactory.createForClass(MoneyEarning);
  
