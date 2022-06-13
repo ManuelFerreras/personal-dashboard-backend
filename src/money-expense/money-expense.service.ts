@@ -31,9 +31,8 @@ export class MoneyExpenseService {
 
     async deleteExpense(req: any, id: string) {
 
-        const expense = this.moneyExpenseModel.findOne({ _id: id });
-        console.log(expense);
-        
+        const expense = this.moneyExpenseModel.findOneAndDelete({ _id: id });
+
         return await this.moneyExpenseModel.deleteOne({ _id: id, createdBy: req.user.userId });
 
     }
