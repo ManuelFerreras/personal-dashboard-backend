@@ -8,6 +8,10 @@ export class MoneyExpenseService {
     constructor(
         @InjectModel("MoneyExpense") private readonly moneyExpenseModel: Model<MoneyExpenseDocument>,
     ) {}
+
+    async getEntriesForMonth(req: any, from, to) {
+        return await this.moneyExpenseModel.find({ createdBy: req.user.userId, generation_date_time: {$gte:new Date(from), $lt:new Date(to)} });
+    }
  
     async createNewExpense(req: any, amount: string, description: string) {
 

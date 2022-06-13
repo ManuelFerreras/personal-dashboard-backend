@@ -8,6 +8,10 @@ export class MoneyEarningService {
     constructor(
         @InjectModel("MoneyEarning") private readonly moneyEarningModel: Model<MoneyEarningDocument>,
     ) {}
+
+    async getEntriesForMonth(req: any, from, to) {
+        return await this.moneyEarningModel.find({ createdBy: req.user.userId, generation_date_time: {$gte:new Date(from), $lt:new Date(to)} });
+    }
  
     async createNewEarning(req: any, amount: string, description: string) {
 

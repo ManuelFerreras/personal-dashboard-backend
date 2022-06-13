@@ -42,5 +42,18 @@ export class MoneyEarningController {
     ) {
         return await this.moneyEarningService.getAllEntries(req);
     }
+
+    @UseGuards(JwtAuthGuard)
+    @Get('getEarningsForMonth')
+    async getEntriesForMonth(
+        @Request() req,
+        @Query('from') from: string,
+        @Query('to') to: string,
+    ) {
+        
+        console.log("Getting Earnings.");
+        
+        return await this.moneyEarningService.getEntriesForMonth(req, from, to);
+    }
  
 }

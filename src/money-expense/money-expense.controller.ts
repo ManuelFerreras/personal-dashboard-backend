@@ -42,5 +42,18 @@ export class MoneyExpenseController {
     ) {
         return await this.moneyExpenseService.getAllEntries(req);
     }
+
+    @UseGuards(JwtAuthGuard)
+    @Get('getExpensesForMonth')
+    async getEntriesForMonth(
+        @Request() req,
+        @Query('from') from: string,
+        @Query('to') to: string,
+    ) {
+        
+        console.log("Getting Expenses.");
+        
+        return await this.moneyExpenseService.getEntriesForMonth(req, from, to);
+    }
  
 }

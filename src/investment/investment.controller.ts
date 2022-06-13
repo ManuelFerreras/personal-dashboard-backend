@@ -53,5 +53,30 @@ export class InvestmentController {
         
         return await this.investmentService.getAllEntries(req);
     }
- 
+    
+    @UseGuards(JwtAuthGuard)
+    @Get('getInvestmentsForMonth')
+    async getEntriesForMonth(
+        @Request() req,
+        @Query('from') from: string,
+        @Query('to') to: string,
+    ) {
+        
+        console.log("Getting Investments.");
+        
+        return await this.investmentService.getEntriesForMonth(req, from, to);
+    }
+    
+    @UseGuards(JwtAuthGuard)
+    @Post('addReturnedAmount')
+    async addReturnedAmount(
+        @Request() req,
+        @Query('id') id: string,
+        @Query('amount') amount: string,
+    ) {
+    
+        console.log("Adding ", amount, " to returned Amount to Investment ", id);
+        
+        return await this.investmentService.addReturnedAmount(req, id, amount);
+    }
 }

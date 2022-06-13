@@ -31,6 +31,10 @@ export class InvestmentService {
 
     }
 
+    async getEntriesForMonth(req: any, from, to) {
+        return await this.investmentModel.find({ createdBy: req.user.userId, generation_date_time: {$gte:new Date(from), $lt:new Date(to)} });
+    }
+
     async deleteInvestment(req: any, id: string) {
 
         const investment = this.investmentModel.findOne({ _id: id });
@@ -38,6 +42,13 @@ export class InvestmentService {
         
         return await this.investmentModel.deleteOne({ _id: id, createdBy: req.user.userId });
 
+    }
+
+    async addReturnedAmount(req: any, id: string, amount: string) {  
+
+        const alreadyReturnedAmount = await (await this.investmentModel.findOne({ _id: id, createdBy: req.user.userId })).toObject().returned_amount;
+        
+        return await this.investmentModel.updateOne({ _id: id, createdBy: req.user.userId }, { returned_amount: (alreadyReturnedAmount + parseInt(amount)) });
     }
 
 }
