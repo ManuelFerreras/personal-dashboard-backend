@@ -5,6 +5,7 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { MoneyEarningModule } from './money-earning/money-earning.module';
 import { MoneyExpenseModule } from './money-expense/money-expense.module';
+import { InvestmentModule } from './investment/investment.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersService } from './users/users.service';
 import { UsersModule } from './users/users.module';
@@ -22,6 +23,7 @@ import { UsersModule } from './users/users.module';
     }),
     MoneyEarningModule,
     MoneyExpenseModule,
+    InvestmentModule,
     AuthModule,
     UsersModule,
   ],
