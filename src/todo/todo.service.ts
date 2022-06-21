@@ -40,4 +40,10 @@ export class TodoService {
 
     }
 
+    async setTodoDone(req: any, id: string, done: boolean) {
+
+        return await this.todoModel.updateOne({ _id: id, createdBy: req.user.userId }, { done: done });
+
+    }
+
 }

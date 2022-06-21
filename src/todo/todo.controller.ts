@@ -55,5 +55,18 @@ export class TodoController {
         
         return await this.todoService.getTodosForMonth(req, from, to);
     }
+    
+    @UseGuards(JwtAuthGuard)
+    @Post('setTodoDone')
+    async setTodoDone(
+        @Request() req,
+        @Query('id') id: string,
+        @Query('done') done: boolean,
+    ) {
+        
+        console.log("Setting Todo Done.");
+        return await this.todoService.setTodoDone(req, id, done);
+
+    }
  
 }

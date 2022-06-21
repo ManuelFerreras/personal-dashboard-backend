@@ -9,6 +9,7 @@ import { InvestmentModule } from './investment/investment.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersService } from './users/users.service';
 import { UsersModule } from './users/users.module';
+import { TodoModule } from './todo/todo.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { UsersModule } from './users/users.module';
     InvestmentModule,
     AuthModule,
     UsersModule,
+    TodoModule,
   ],
   controllers: [AppController],
   providers: [AppService, UsersService],
