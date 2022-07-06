@@ -27,7 +27,7 @@ export class InvestmentService {
 
     async getAllEntries(req: any) {
 
-        return await this.investmentModel.find({ userId: req.user.userId });
+        return await this.investmentModel.find({ createdBy: req.user.userId });
 
     }
 

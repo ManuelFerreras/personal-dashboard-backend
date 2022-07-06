@@ -30,7 +30,7 @@ export class TodoService {
 
     async getAllTodos(req: any) {
 
-        return await this.todoModel.find({ userId: req.user.userId });
+        return await this.todoModel.find({ createdBy: req.user.userId });
 
     }
 

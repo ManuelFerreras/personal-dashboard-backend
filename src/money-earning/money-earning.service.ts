@@ -29,7 +29,7 @@ export class MoneyEarningService {
 
     async getAllEntries(req: any) {
 
-        return await this.moneyEarningModel.find({ userId: req.user.userId });
+        return await this.moneyEarningModel.find({ createdBy: req.user.userId });
 
     }
 
